@@ -61,6 +61,7 @@ client.on('ready', () => {
 });
 
 //--------------------------------------------------------------------------------
+// process messages
 
 client.on('messageCreate', msg => {
     // filter messages
@@ -158,6 +159,22 @@ client.on('messageCreate', msg => {
         msg.channel.send('Command execution failed');
         console.log(error);
     }
+});
+
+//--------------------------------------------------------------------------------
+// guild join
+
+client.on('guildCreate', guild => {
+    // create den
+
+    // generate monsters
+});
+
+//--------------------------------------------------------------------------------
+// guild leave
+
+client.on('guildDelete', guild => {
+    // remove den
 });
 
 //--------------------------------------------------------------------------------
