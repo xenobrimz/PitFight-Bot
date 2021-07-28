@@ -5,6 +5,7 @@ import {
 import { default as config } from './config.json';
 import { initialize as initializeHelp } from './commands/help.js';
 import { removeAllSpecialChars } from './lib/stringUtils.js';
+import { readdirSync } from 'fs';
 
 //--------------------------------------------------------------------------------
 
