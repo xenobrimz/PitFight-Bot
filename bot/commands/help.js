@@ -21,7 +21,7 @@ const specific = {
 export function initialize(commands) {
     helpCenter.embeds[0].fields = [
         {
-            name: 'My Commands',
+            name: 'Commands',
             value: commands.map(cmd => `• ${cmd.names[0]}`).join('\n')
         },
         specific
