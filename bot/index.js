@@ -87,7 +87,7 @@ client.on('messageCreate', msg => {
 
     const msgStr = msg.content.toLowerCase();
 
-    if (msgStr.startsWith(config.prefix)) {
+    if (!msgStr.startsWith(config.prefix)) {
         return;
     }
 
