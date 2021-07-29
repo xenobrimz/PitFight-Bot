@@ -5,26 +5,31 @@ const MonsterSchema = new mongoose.Schema({
     name: String,
     health: Number,
     defence: Number,
-    skills:{
-        skill1:{
+    skills:[
+        {
+            skillNumber:Number,
             name: String,
             damage: Number,
             type: String
         },
-        skill2:{
+        {
+            skillNumber:Number,
             name: String,
             damage: Number,
             type: String
-        }, 
-        skill3:{
+        },
+        {
+            skillNumber:Number,
             name: String,
             damage: Number,
             type: String
-        },  
-      
-    },
-
-})
+        }
+    ],  
+    wins:Number,
+    losses:Number
+},
+{typeKey: '$type'}
+);
 
 const Monster = mongoose.model('Monsters', MonsterSchema);
 
