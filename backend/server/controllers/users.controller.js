@@ -7,18 +7,17 @@ module.exports.findAllUsers = (req, res) =>{
         .catch(err => res.json({message: 'uh-oh something went wrong', error: err})) 
 }
 
-
 module.exports.findOneUser = (req, res) =>{
     console.log('Calling Users!!!')
-    users.find({_id: req.params._id}) 
-        .then(monster => res.json({results: monster}))
+    users.findOne({_id: req.params._id})
+        .then(user => res.json({result: user}))
         .catch(err => res.json({message: 'uh-oh something went wrong', error: err})) 
 }
 
 module.exports.createUser = (req, res) =>{
     console.log('Creating User!!!')
     users.create(req.body) 
-        .then(newMonster => res.json({result: newMonster}))
+        .then(newUser => res.json({result: newUser}))
         .catch(err => res.json({message: 'uh-oh something went wrong', error: err}))
 }
 
@@ -29,7 +28,7 @@ module.exports.updateUser = (req, res) =>{
         req.body, 
         {new: true, runValidators: true}
     )
-       .then(updatedMonster => res.json({result: updatedMonster}))
+       .then(updatedUser => res.json({result: updatedUser}))
        .catch(err => res.json({message: 'uh-oh something went wrong', error: err})) 
 }
     
