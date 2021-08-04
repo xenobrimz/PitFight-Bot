@@ -18,6 +18,11 @@ export default {
     async execute(msg, args) {
         const den = await densAPI.get(msg.guild.id);
 
+        if (den === null) {
+            msg.channel.send('This server doesn\'t have a den');
+            return;
+        }
+
         let embed = {
             embeds: [{
                 title: 'This server\'s den',
