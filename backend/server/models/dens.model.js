@@ -4,7 +4,7 @@ require('./monsters.model');
 const Schema = mongoose.Schema
 
 const DensSchema = new Schema({
-    serverId: String,
+    _id: String,
     monsters:[{ type: Schema.Types.ObjectId, ref: 'Monsters' }]
 })
 
