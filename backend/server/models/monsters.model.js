@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
 
-
 const MonsterSchema = new mongoose.Schema({
     name: String,
     health: Number,
-    defence: Number,
+    defense: Number,
     skills:[
         {
             skillNumber:Number,
