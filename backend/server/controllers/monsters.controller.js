@@ -7,11 +7,10 @@ module.exports.findAllMonsters = (req, res) =>{
         .catch(err => res.json({message: 'uh-oh something went wrong', error: err})) 
 }
 
-
 module.exports.findOneMonster = (req, res) =>{
     console.log('Calling Monster!!!')
-    monsters.find({_id: req.params._id}) 
-        .then(monster => res.json({results: monster}))
+    monsters.findOne({_id: req.params._id}) 
+        .then(monster => res.json({result: monster}))
         .catch(err => res.json({message: 'uh-oh something went wrong', error: err})) 
 }
 
