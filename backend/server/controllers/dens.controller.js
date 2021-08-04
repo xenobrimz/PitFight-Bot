@@ -7,11 +7,10 @@ module.exports.findAllDens = (req, res) =>{
         .catch(err => res.json({message: 'uh-oh something went wrong', error: err})) 
 }
 
-
 module.exports.findOneDen = (req, res) =>{
     console.log('Calling Den!!!')
-    dens.find({_id: req.params._id}) 
-        .then(Den => res.json({results: Den}))
+    dens.findOne({_id: req.params._id}) 
+        .then(Den => res.json({result: Den}))
         .catch(err => res.json({message: 'uh-oh something went wrong', error: err})) 
 }
 
