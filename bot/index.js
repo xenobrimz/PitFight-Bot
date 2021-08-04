@@ -6,6 +6,8 @@ import { default as config } from './config.json';
 import { initialize as initializeHelp } from './commands/help.js';
 import { removeAllSpecialChars } from './lib/stringUtils.js';
 import { readdirSync } from 'fs';
+import { densAPI } from './lib/api.js';
+import { initializeDen } from './lib/densUtils.js';
 
 //--------------------------------------------------------------------------------
 
@@ -166,16 +168,14 @@ client.on('messageCreate', msg => {
 // guild join
 
 client.on('guildCreate', guild => {
-    // create den
-
-    // generate monsters
+    initializeDen(guild.id);
 });
 
 //--------------------------------------------------------------------------------
 // guild leave
 
 client.on('guildDelete', guild => {
-    // remove den
+    densAPI.delete(guild.id);
 });
 
 //--------------------------------------------------------------------------------
