@@ -5,6 +5,7 @@ const MonsterSchema = new mongoose.Schema({
     health: Number,
     defense: Number,
     skills:[
+        // Make skill number the index of the skill of the array + 1
         {
             skillNumber:Number,
             name: String,
