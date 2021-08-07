@@ -33,8 +33,8 @@ module.exports.updateName = (req, res) =>{
 }
     
 
-module.exports.deleteDen = (req, res) =>{
-    console.log('Deleting Den!!!')
+module.exports.deleteName = (req, res) =>{
+    console.log('Deleting Name!!!')
     names.deleteOne({ _id: req.params._id }) 
         .then( result => res.json({ result: result }) )
         .catch( err => res.json({message: 'uh-oh something went wrong', error: err}) ) 
