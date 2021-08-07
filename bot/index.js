@@ -39,9 +39,9 @@ client.commands = [];
 
 const commandFiles = readdirSync('./commands/').filter(aFile => aFile.endsWith('.js'));
 
-for (let i = 0, n = commandFiles.length; i < n; i++) {
-    client.commands[i] = (await import(`./commands/${commandFiles[i]}`)).default;
-}
+client.commands = commandFiles.map(f => import(`./commands/${f}`));
+
+client.commands = (await Promise.all(client.commands)).map(i => i.default);
 
 //--------------------------------------------------------------------------------
 // initialize help embeds
