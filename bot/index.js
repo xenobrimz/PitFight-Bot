@@ -60,7 +60,7 @@ client.on('ready', () => {
     //--------------------------------------------------------------------------------
     // console log the start up time
 
-    console.log(`Ready ${client.readyAt.toString()}`);
+    console.log(`Startup: ${client.readyAt.toString()}`);
 });
 
 //--------------------------------------------------------------------------------
@@ -181,7 +181,7 @@ client.on('guildDelete', guild => {
 //--------------------------------------------------------------------------------
 // disconnect
 
-client.on('shardDisconnect', () => console.log(`Disconnected ${new Date().toString()}`));
+client.on('shardDisconnect', () => console.log(`Disconnected: ${new Date().toString()}`));
 
 //--------------------------------------------------------------------------------
 // reconnect
@@ -194,7 +194,7 @@ client.on('shardResume', () => {
     //--------------------------------------------------------------------------------
     // console log the start up time
 
-    console.log(`Reconnected ${client.readyAt.toString()}`);
+    console.log(`Reconnected: ${client.readyAt.toString()}`);
 });
 
 client.login(config.token);
