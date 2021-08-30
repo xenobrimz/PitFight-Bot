@@ -32,21 +32,30 @@ const client = new Client({
 
 const minimumPermissions = ['SEND_MESSAGES'];
 const cooldowns = new Map();
-client.commands = [];
+client.commands = new Map();
+let commands = [];
 
 //--------------------------------------------------------------------------------
 // load commands
 
 const commandFiles = readdirSync('./commands/').filter(aFile => aFile.endsWith('.js'));
 
-client.commands = commandFiles.map(f => import(`./commands/${f}`));
+commands = commandFiles.map(f => import(`./commands/${f}`));
 
-client.commands = (await Promise.all(client.commands)).map(i => i.default);
+commands = (await Promise.all(commands)).map(i => i.default);
+
+for (let i = 0, n = commands.length; i < n; i++) {
+    const command = commands[i];
+
+    for (let j = 0, m = command.names.length; j < m; j++) {
+        client.commands.set(command.names[j], command);
+    }
+}
 
 //--------------------------------------------------------------------------------
 // initialize help embeds
 
-initializeHelp(client.commands);
+initializeHelp(commands);
 
 //--------------------------------------------------------------------------------
 // login actions
@@ -101,7 +110,7 @@ client.on('messageCreate', msg => {
     //--------------------------------------------------------------------------------
     // get command
 
-    const command = client.commands.find(cmd => cmd.names.includes(userCommand));
+    const command = client.commands.get(userCommand);
 
     if (typeof command === 'undefined') {
         return;
