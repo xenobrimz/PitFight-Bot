@@ -96,7 +96,7 @@ client.on('messageCreate', msg => {
     //--------------------------------------------------------------------------------
     // commands
 
-    const msgStr = msg.content.toLowerCase();
+    const msgStr = msg.content;
 
     if (!msgStr.startsWith(config.prefix)) {
         return;
@@ -105,7 +105,7 @@ client.on('messageCreate', msg => {
     // split command and arguments
 
     let args = msgStr.slice(config.prefix.length).trim().split(' ');
-    const userCommand = args.shift();
+    const userCommand = args.shift().toLowerCase();
 
     //--------------------------------------------------------------------------------
     // get command
