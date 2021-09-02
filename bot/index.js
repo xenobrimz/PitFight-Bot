@@ -75,7 +75,7 @@ client.on('ready', () => {
 //--------------------------------------------------------------------------------
 // process messages
 
-client.on('messageCreate', msg => {
+client.on('messageCreate', async msg => {
     // filter messages
     if (msg.author.bot || !msg.content.length) {
         return;
@@ -104,7 +104,8 @@ client.on('messageCreate', msg => {
 
     // split command and arguments
 
-    let args = msgStr.slice(config.prefix.length).trim().split(' ');
+    // discord trims the original message so only a left trim is needed
+    let args = msgStr.slice(config.prefix.length).trimLeft().split(' ');
     const userCommand = args.shift().toLowerCase();
 
     //--------------------------------------------------------------------------------
@@ -165,7 +166,7 @@ client.on('messageCreate', msg => {
     // execute command
 
     try {
-        command.execute(msg, args);
+        await command.execute(msg, args);
     }
     catch (error) {
         msg.channel.send('Command execution failed');
