@@ -187,3 +187,53 @@ export const usersAPI = {
         return (await axios.delete(`${usersURL}${id}/delete/`)).data.result;
     }
 };
+
+//--------------------
+
+const namesURL = `${apiURL}names/`;
+export const namesAPI = {
+    /**
+     * 
+     * @returns array of name objects
+     */
+    async getAll() {
+        return (await axios.get(namesURL)).data.results;
+    },
+
+    /**
+     * 
+     * @param {*} id 
+     * @returns name object
+     */
+    async get(id) {
+        return (await axios.get(`${namesURL}${id}`)).data.result;
+    },
+
+    /**
+     * 
+     * @param {*} nameObj 
+     * @returns name object
+     */
+    async create(nameObj) {
+        return (await axios.post(`${namesURL}create/`, nameObj)).data.result;
+    },
+
+    /**
+     * 
+     * @param {*} id 
+     * @param {*} nameObj 
+     * @returns name object
+     */
+    async update(id, nameObj) {
+        return (await axios.patch(`${namesURL}${id}/update/`, nameObj)).data.result;
+    },
+
+    /**
+     * 
+     * @param {*} id 
+     * @returns delete name object
+     */
+    async delete(id) {
+        return (await axios.delete(`${namesURL}${id}/delete/`)).data.result;
+    }
+};
