@@ -2,18 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const NamesSchema = new Schema({
-    _id: String,
-    names:{
-        monsterNames:{
-            first:[
-            ],
-            middle:[
-            ],
-            last:[
-            ]
+    names: {
+        monsterNames: {
+            first: [String],
+            middle: [String],
+            last: [String]
         },
-        skillNames:[
-        ]
+        skillNames: [String]
     }
 })
 
