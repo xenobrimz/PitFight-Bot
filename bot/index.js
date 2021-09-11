@@ -204,7 +204,7 @@ client.on('shardResume', () => {
     //--------------------------------------------------------------------------------
     // console log the start up time
 
-    console.log(`Reconnected: ${client.readyAt.toString()}`);
+    console.log(`Reconnected: ${new Date().toString()}`);
 });
 
 client.login(config.token);
